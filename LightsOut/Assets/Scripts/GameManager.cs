@@ -16,10 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject[] randomObjects;
     private GameObject objectToHide;
 
+    [SerializeField] private AudioSource ukkonenSoundEffect;
+    [SerializeField] private AudioSource taustamusiikki;
     // Start is called before the first frame update
     void Start()
     {
-        
+        taustamusiikki.Play();
     }
 
     // Update is called once per frame
@@ -27,8 +29,12 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
+            taustamusiikki.Stop(); 
+            ukkonenSoundEffect.Play();
             blackScreen.SetActive(true); // activates a black overlay
+ 
             StartCoroutine(BlackScreenTimer());
+            
         }
     }
 
@@ -42,6 +48,7 @@ public class GameManager : MonoBehaviour
             timerText.text = Convert.ToString(10 - i);
             i++;
         }
+        taustamusiikki.Play();
         HideItem();
         timerText.text = "";
         blackScreen.SetActive(false);
