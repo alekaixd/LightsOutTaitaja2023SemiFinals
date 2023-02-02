@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using System;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
 
     public GameObject[] randomObjects;
+    private GameObject objectToHide;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,13 @@ public class GameManager : MonoBehaviour
 
     private void HideItem()
     {
-        GameObject objectToHide = randomObjects[UnityEngine.Random.Range(0, randomObjects.Length)];
+        objectToHide = randomObjects[Random.Range(0, randomObjects.Length)];
+        objectToHide.GetComponent<SpriteRenderer>().enabled = false;
         Debug.Log(objectToHide);
+    }
+
+    public void WinGame()
+    {
+        
     }
 }
