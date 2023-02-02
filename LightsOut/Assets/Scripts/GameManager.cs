@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject blackScreen;
     [SerializeField] private TextMeshProUGUI timerText;
+
+    public GameObject[] randomObjects;
     // Start is called before the first frame update
     void Start()
     {
-        
+        HideItem();
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            blackScreen.SetActive(true);
+            blackScreen.SetActive(true); // activates a black overlay
             StartCoroutine(BlackScreenTimer());
         }
     }
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator BlackScreenTimer()
     {
         int i = 0;
-        while (i < 10)
+        while (i < 10) // loops to change the timer text on the dark screen
         {
             yield return new WaitForSeconds(1);
             timerText.text = Convert.ToString(10 - i);
@@ -37,5 +39,11 @@ public class GameManager : MonoBehaviour
         }
         
         blackScreen.SetActive(false);
+    }
+
+    private void HideItem()
+    {
+        GameObject objectToHide = randomObjects[UnityEngine.Random.Range(0, randomObjects.Length)];
+        Debug.Log(objectToHide);
     }
 }
