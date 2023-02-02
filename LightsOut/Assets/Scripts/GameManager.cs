@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -69,10 +70,13 @@ public class GameManager : MonoBehaviour
     public void WinGame() //on win condition changes to another scene
     {
         Debug.Log("Win game!"); // this writes a debug message to the console on the unity editor
+        SceneManager.LoadScene("Win Scene"); //Player goes to Win scene
+        
     }
 
     public void LoseGame()
     {
+        SceneManager.LoadScene("Lose Scene"); //Player goes to Lose Scene
         
     }
 }
