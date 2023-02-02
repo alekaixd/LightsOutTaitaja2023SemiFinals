@@ -20,6 +20,11 @@ public class mainmenu : MonoBehaviour
         SceneManager.LoadScene("credits"); //Siirtää pelaajan credits sceneen, jossa näkyy krediitit
     }
 
+    public void main_menu()
+    {
+        SceneManager.LoadScene("MainMeniu");
+    }
+
 
 
 }
