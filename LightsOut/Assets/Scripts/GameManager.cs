@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject blackScreen;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject infoText; //the whole object
+    [SerializeField] private TextMeshProUGUI infoTextMeshPro;
 
     public GameObject[] randomObjects;
     private GameObject objectToHide;
@@ -17,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HideItem();
+        
     }
 
     // Update is called once per frame
@@ -33,25 +35,30 @@ public class GameManager : MonoBehaviour
     private IEnumerator BlackScreenTimer()
     {
         int i = 0;
-        while (i < 10) // loops to change the timer text on the dark screen
+        infoText.SetActive(false);
+        while (i < 11) // loops to change the timer text on the dark screen
         {
             yield return new WaitForSeconds(1);
             timerText.text = Convert.ToString(10 - i);
             i++;
         }
-        
+        HideItem();
+        timerText.text = "";
         blackScreen.SetActive(false);
+        infoTextMeshPro.text = "What has changed?\nClick Where the object disappeared";
+        infoText.SetActive(true);
     }
 
     private void HideItem()
     {
         objectToHide = randomObjects[Random.Range(0, randomObjects.Length)];
+        objectToHide.GetComponent<ObjectClickScript>().isCorrectObject = true;
         objectToHide.GetComponent<SpriteRenderer>().enabled = false;
         Debug.Log(objectToHide);
     }
 
     public void WinGame()
     {
-        
+        Debug.Log("Win game!");
     }
 }
