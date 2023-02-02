@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectClickScript : MonoBehaviour
 {
-    public bool isCorrectObject = false;
+    public bool isCorrectObject = false; // is changed
     [SerializeField] private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
@@ -18,11 +18,16 @@ public class ObjectClickScript : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
+    private void OnMouseDown() //on click executes if statements
     {
-        if (isCorrectObject == true)
+        if (isCorrectObject == true) //checks if the gameobjects "isCorrectObject" has been changed
         {
             gameManager.WinGame();
+        }
+
+        else // if not you lose
+        {
+            gameManager.LoseGame();
         }
     }
 }
