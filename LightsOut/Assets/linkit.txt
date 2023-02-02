@@ -7,3 +7,4 @@ https://assetstore.unity.com/packages/2d/characters/enemy-galore-1-pixel-art-208
 https://assetstore.unity.com/packages/2d/environments/2d-environment-starter-pack-237152
 https://assetstore.unity.com/packages/2d/undead-survivor-assets-pack-238068
 https://assetstore.unity.com/packages/2d/2d-basic-room-assets-234762
+https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
